@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
+
+/*TODO: this is not supported yey*/
 namespace sanity_project_csharp.Controllers
 {
     public class TeacherController : Controller

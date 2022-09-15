@@ -1,7 +1,10 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using sanity_project_csharp.Services;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddSingleton<IUserService, UserService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -15,15 +18,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// not supported yet- This will not be detected by SAST
+app.MapControllers();
+
+/*TODO: not supported yet- This will not be detected by SAST
 app.MapControllerRoute(
     name: "default",
     pattern: "api/{controller=Teacher}/{action=Index}/{id?}");
+*/
 
+//app.UseRouting();
 
-app.UseRouting();
-
-// not supported yet- This will not be detected by SAST
+// TODO: not supported yet- This will not be detected by SAST
 //app.UseEndpoints(endpoints =>
 //{
 //    endpoints.MapControllers();
@@ -32,8 +37,8 @@ app.UseRouting();
 //        pattern: "api/{controller=Teacher}/{action=Index}/{id?}");
 //});
 
-// not supported yet- This will not be detected by SAST
-app.MapGet("/", () => "Hello World!");
+// TODO: not supported yet- This will not be detected by SAST
+//app.MapGet("/", () => "Hello World!");
 
 app.Run();
 
