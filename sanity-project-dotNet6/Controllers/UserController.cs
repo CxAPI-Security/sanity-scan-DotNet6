@@ -2,30 +2,32 @@ using Microsoft.AspNetCore.Mvc;
 using sanity_project_csharp.Models;
 using sanity_project_csharp.Services;
 
-namespace sanity_project_csharp.Controllers;
-
-[Route("user")]
-public class UserController : Controller
+namespace sanity_project_csharp.Controllers
 {
-    private readonly IUserService _userService;
 
-    public UserController(IUserService userService)
+    [Route("user")]
+    public class UserController : Controller
     {
-        _userService = userService;
-    }
+        private readonly IUserService _userService;
 
-    [HttpPost("create/cart")]
-    public void CreateUserCart(
-        [FromBody] User user,
-        [FromRoute] ISet<string> productIds,
-        [FromRoute] ISet<int> quantities)
-    {
-        _userService.CreateUserCart(user, productIds, quantities);
-    }
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
 
-    [HttpPost("create/mapCart")]
-    public void CreateUserMapCart([FromBody] User user, [FromRoute] Dictionary<string, int> mapCart)
-    {
-        _userService.CreateUserMapCart(user, mapCart);
+        [HttpPost("create/cart")]
+        public void CreateUserCart(
+            [FromBody] User user,
+            [FromQuery] ISet<string> productIds,
+            [FromQuery] ISet<int> quantities)
+        {
+            _userService.CreateUserCart(user, productIds, quantities);
+        }
+
+        [HttpPost("create/mapCart")]
+        public void CreateUserMapCart([FromBody] User user, [FromQuery] Dictionary<string, int> mapCart)
+        {
+            _userService.CreateUserMapCart(user, mapCart);
+        }
     }
 }
