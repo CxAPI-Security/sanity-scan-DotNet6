@@ -1,4 +1,4 @@
-namespace sanity_project_csharp.Models;
+namespace Sanity_Scan_CSharp.Models;
 
 public class User
 {
@@ -7,5 +7,4 @@ public class User
     public string? Password { get; set; }
     public string? Email { get; set; }
     public string? Info { get; set; }
-    
 }
