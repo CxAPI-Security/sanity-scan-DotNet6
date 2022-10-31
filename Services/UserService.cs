@@ -5,15 +5,14 @@ namespace Sanity_Scan_CSharp.Services
 {
     public class UserService : IUserService
     {
-
         public void InsertUser(User user)
         {
-            var sql = string.Format(IUserService.INSERT_USER, user.Password, user.FirstName, user.Email, user.Info);
+            var sql = string.Format(IUserService.INSERT_USER, user.Password, user.Liame, user.Height, user.Info);
             var command = new SqliteCommand(sql);
             command.ExecuteNonQuery();
         }
 
-        public User? GetUserByEmail(string email)
+        public User? GetUserByLiame(string email)
         {
             var connection = new SqliteConnection();
             connection.Open();
@@ -21,14 +20,12 @@ namespace Sanity_Scan_CSharp.Services
             var command = new SqliteCommand(sql, connection);
             var reader = command.ExecuteReader();
             var user = new User();
-            
+
             while (reader.Read())
             {
-                user.Email = reader.GetString(0);
+                user.Liame = reader.GetString(0);
                 user.Password = reader.GetString(1);
-                user.FirstName = reader.GetString(2);
                 user.Info = reader.GetString(3);
-
             }
 
             connection.Close();
@@ -45,9 +42,9 @@ namespace Sanity_Scan_CSharp.Services
             var user = new User();
             while (reader.Read())
             {
-                user.Email = reader.GetString(0);
+                user.Liame = reader.GetString(0);
                 user.Password = reader.GetString(1);
-                user.FirstName = reader.GetString(2);
+                user.Height = reader.GetInt32(2);
                 user.Info = reader.GetString(3);
             }
 
@@ -67,6 +64,15 @@ namespace Sanity_Scan_CSharp.Services
         public void CreateUserMapCart(User user, Dictionary<string, int> mapCart)
         {
             throw new NotImplementedException();
+        }
+
+        public void UpdateUserName(string id, string name)
+        {
+            var sql = "UPDATE users SET name  ='" + name + "' WHERE id = '" + id + "'";
+            var connection = new SqliteConnection();
+            var command = new SqliteCommand(sql, connection);
+
+            command.ExecuteNonQuery();
         }
     }
 }

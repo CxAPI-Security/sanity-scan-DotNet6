@@ -13,13 +13,6 @@ namespace Sanity_Scan_CSharp.Controllers
         {
             _userService = userService;
         }
-
-        [HttpGet]
-        [Route(template:"/user/findAll")]
-        public List<User> FindAllUsers()
-        {
-            return new List<User>();
-        }
         
         [HttpPost]
         [Route(template:"/user/insert")]
@@ -41,7 +34,7 @@ namespace Sanity_Scan_CSharp.Controllers
         [Route("/user/get/byEmail/{email}")]
         public ActionResult GetUserByEmail([FromRoute(Name = "email")] string email)
         {
-            var user = _userService.GetUserByEmail(email);
+            var user = _userService.GetUserByLiame(email);
             if (user == null)
             {
                 return NotFound();
@@ -72,6 +65,21 @@ namespace Sanity_Scan_CSharp.Controllers
         public string GetUserFirstName([FromRoute] string email)
         {
             return "LioR";
+        }
+
+        [HttpPost]
+        [Route("/user/updateMe")]
+        public void UpdateUserMe([FromBody] User user)
+        {
+            Console.WriteLine(user);
+            _userService.UpdateUser(user);
+        }
+
+        [HttpPost]   
+        [Route("/user/update/name")]
+        public void UpdateUserName([FromQuery] string name, [FromQuery] string id)
+        {
+            _userService.UpdateUserName(id, name);
         }
 
         [HttpPost]

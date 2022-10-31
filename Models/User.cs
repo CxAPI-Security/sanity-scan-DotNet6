@@ -1,10 +1,13 @@
-namespace Sanity_Scan_CSharp.Models;
-
-public class User
+namespace Sanity_Scan_CSharp.Models
 {
-    public long Id { get; set; }
-    public string? FirstName { get; set; }
-    public string? Password { get; set; }
-    public string? Email { get; set; }
-    public string? Info { get; set; }
+
+    public class User
+    {
+        public long Id { get; set; }
+        public string? Password { get; set; }
+        public string? Info { get; set; }
+
+        public string? Liame { get; set; }
+        public int Height { get; set; }
+    }
 }
