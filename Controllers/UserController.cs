@@ -27,6 +27,7 @@ namespace Sanity_Scan_CSharp.Controllers
         public User CreateUserVar([FromBody] User user, [FromQuery] string password)
         {
             user.Info = "OK";
+            Console.WriteLine(user);
             return user;
         }
 
@@ -48,6 +49,7 @@ namespace Sanity_Scan_CSharp.Controllers
         [Route("/user/get/byId/{id:long}")]
         public ActionResult  GetUSerById([FromRoute(Name = "id")] long id)
         {
+            Console.WriteLine(id);
             var user = _userService.GetUSerById(id);
             if (user == null) return NotFound();
             return Ok(user);
@@ -57,6 +59,7 @@ namespace Sanity_Scan_CSharp.Controllers
         [Route("/user/update")]
         public void UpdateUser([FromBody] User user)
         {
+            Console.WriteLine(user);
             _userService.UpdateUser(user);
         }
 
