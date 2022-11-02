@@ -2,7 +2,6 @@ using System.ComponentModel;
 
 namespace Sanity_Scan_CSharp.Models
 {
-
     public enum GovernmentForm
     {
         [Description("Monarchy")] MONARCHY,
