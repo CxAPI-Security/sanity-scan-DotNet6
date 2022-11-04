@@ -1,0 +1,1 @@
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="ApiDiscovery.MvcApplication" Language="C#" %>
