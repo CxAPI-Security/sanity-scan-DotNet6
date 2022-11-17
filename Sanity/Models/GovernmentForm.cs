@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Sanity_Scan_CSharp.Models
+namespace Sanity.Models
 {
     public enum GovernmentForm
     {
