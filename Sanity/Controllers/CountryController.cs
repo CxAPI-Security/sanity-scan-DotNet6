@@ -1,15 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
-using Sanity_Scan_CSharp.Models;
-using Sanity_Scan_CSharp.Services;
+using Sanity.Models;
+using Sanity.Services;
 
-namespace Sanity_Scan_CSharp.Controllers
+namespace Sanity.Controllers
 {
-
     [ApiController]
     public class CountryController : ControllerBase
     {
         private readonly ICountryService _countryService;
-
 
         public CountryController(ICountryService countryService)
         {

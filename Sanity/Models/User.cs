@@ -1,6 +1,5 @@
-namespace Sanity_Scan_CSharp.Models
+namespace Sanity.Models
 {
-
     public class User
     {
         public long Id { get; set; }

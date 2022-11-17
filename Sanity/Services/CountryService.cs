@@ -1,8 +1,7 @@
-using Sanity_Scan_CSharp.Models;
+using Sanity.Models;
 
-namespace Sanity_Scan_CSharp.Services
+namespace Sanity.Services
 {
-
     public class CountryService : ICountryService
     {
         public GovernmentForm GetGovernmentForms(int id)

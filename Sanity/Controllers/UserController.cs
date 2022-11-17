@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using Sanity_Scan_CSharp.Models;
-using Sanity_Scan_CSharp.Services;
+using Sanity.Models;
+using Sanity.Services;
 
-namespace Sanity_Scan_CSharp.Controllers
+namespace Sanity.Controllers
 {
     [ApiController]
     public class UserController : ControllerBase
@@ -15,14 +15,14 @@ namespace Sanity_Scan_CSharp.Controllers
         }
 
         [HttpGet]
-        [Route(template:"/user/findAll")]
+        [Route(template: "/user/findAll")]
         public List<User> FindAllUsers()
         {
             return new List<User>();
         }
-        
+
         [HttpPost]
-        [Route(template:"/user/insert")]
+        [Route(template: "/user/insert")]
         public User CreateUser([FromBody] User user)
         {
             _userService.InsertUser(user);
@@ -47,15 +47,14 @@ namespace Sanity_Scan_CSharp.Controllers
             if (user == null)
             {
                 return NotFound();
-
             }
-            
+
             return Ok(user);
         }
-        
+
         [HttpGet]
         [Route("/user/get/byId/{id:long}")]
-        public ActionResult  GetUSerById([FromRoute(Name = "id")] long id)
+        public ActionResult GetUSerById([FromRoute(Name = "id")] long id)
         {
             Console.WriteLine(id);
             var user = _userService.GetUSerById(id);
@@ -94,6 +93,5 @@ namespace Sanity_Scan_CSharp.Controllers
         {
             _userService.CreateUserMapCart(user, mapCart);
         }
-           
     }
 }
