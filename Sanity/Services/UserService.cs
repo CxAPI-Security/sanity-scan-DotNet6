@@ -3,7 +3,6 @@ using Sanity.Models;
 
 namespace Sanity.Services
 {
-
     public class UserService : IUserService
     {
         public void InsertUser(User user)

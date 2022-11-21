@@ -13,7 +13,7 @@ namespace Sanity.Controllers
         {
             _userService = userService;
         }
-        
+
         [HttpPost]
         [Route(template: "/user/insert")]
         public User CreateUser([FromBody] User user)
@@ -77,7 +77,7 @@ namespace Sanity.Controllers
             _userService.UpdateUser(user);
         }
 
-        [HttpPost]   
+        [HttpPost]
         [Route("/user/update/name")]
         public void UpdateUserName([FromQuery] string name, [FromQuery] string id)
         {
