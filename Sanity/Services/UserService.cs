@@ -1,8 +1,9 @@
 using Microsoft.Data.Sqlite;
-using Sanity_Scan_CSharp.Models;
+using Sanity.Models;
 
-namespace Sanity_Scan_CSharp.Services
+namespace Sanity.Services
 {
+
     public class UserService : IUserService
     {
 
@@ -21,7 +22,7 @@ namespace Sanity_Scan_CSharp.Services
             var command = new SqliteCommand(sql, connection);
             var reader = command.ExecuteReader();
             var user = new User();
-            
+
             while (reader.Read())
             {
                 user.Email = reader.GetString(0);

@@ -1,9 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Sanity_Scan_CSharp.Controllers
+namespace Sanity.Controllers
 {
-
     [ApiController]
     public class UtilController : ControllerBase
     {
