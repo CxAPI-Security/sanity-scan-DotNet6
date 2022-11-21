@@ -1,8 +1,7 @@
-using Sanity_Scan_CSharp.Models;
+using Sanity.Models;
 
-namespace Sanity_Scan_CSharp.Services
+namespace Sanity.Services
 {
-
     public interface IUserService
     {
         public static string GET_USER_BY_EMAIL = "select u.* from users u where upper(u.email) = upper({0})";
@@ -17,7 +16,6 @@ namespace Sanity_Scan_CSharp.Services
         void UpdateUser(User user);
         void CreateUserCart(User user, ISet<string> productIds, ISet<int> quantities);
         void CreateUserMapCart(User user, Dictionary<string, int> mapCart);
-
         void UpdateUserName(string id, string name);
     }
 }

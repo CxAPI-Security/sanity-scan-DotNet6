@@ -1,6 +1,5 @@
-using Microsoft.AspNetCore.Identity;
-using Sanity_Scan_CSharp;
-using Sanity_Scan_CSharp.Services;
+using Sanity;
+using Sanity.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

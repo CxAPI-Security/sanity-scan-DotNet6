@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using Sanity_Scan_CSharp.Models;
-using Sanity_Scan_CSharp.Services;
+using Sanity.Models;
+using Sanity.Services;
 
-namespace Sanity_Scan_CSharp.Controllers
+namespace Sanity.Controllers
 {
     [ApiController]
     public class UserController : ControllerBase
@@ -13,9 +13,9 @@ namespace Sanity_Scan_CSharp.Controllers
         {
             _userService = userService;
         }
-        
+
         [HttpPost]
-        [Route(template:"/user/insert")]
+        [Route(template: "/user/insert")]
         public User CreateUser([FromBody] User user)
         {
             _userService.InsertUser(user);
@@ -27,6 +27,7 @@ namespace Sanity_Scan_CSharp.Controllers
         public User CreateUserVar([FromBody] User user, [FromQuery] string password)
         {
             user.Info = "OK";
+            Console.WriteLine(user);
             return user;
         }
 
@@ -38,16 +39,16 @@ namespace Sanity_Scan_CSharp.Controllers
             if (user == null)
             {
                 return NotFound();
-
             }
-            
+
             return Ok(user);
         }
-        
+
         [HttpGet]
         [Route("/user/get/byId/{id:long}")]
-        public ActionResult  GetUSerById([FromRoute(Name = "id")] long id)
+        public ActionResult GetUSerById([FromRoute(Name = "id")] long id)
         {
+            Console.WriteLine(id);
             var user = _userService.GetUSerById(id);
             if (user == null) return NotFound();
             return Ok(user);
@@ -57,6 +58,7 @@ namespace Sanity_Scan_CSharp.Controllers
         [Route("/user/update")]
         public void UpdateUser([FromBody] User user)
         {
+            Console.WriteLine(user);
             _userService.UpdateUser(user);
         }
 
@@ -75,7 +77,7 @@ namespace Sanity_Scan_CSharp.Controllers
             _userService.UpdateUser(user);
         }
 
-        [HttpPost]   
+        [HttpPost]
         [Route("/user/update/name")]
         public void UpdateUserName([FromQuery] string name, [FromQuery] string id)
         {
@@ -98,6 +100,5 @@ namespace Sanity_Scan_CSharp.Controllers
         {
             _userService.CreateUserMapCart(user, mapCart);
         }
-           
     }
 }

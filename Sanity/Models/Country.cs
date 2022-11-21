@@ -1,6 +1,5 @@
-namespace Sanity_Scan_CSharp.Models
+namespace Sanity.Models
 {
-
     public class Country
     {
         public int Id { get; set; }
